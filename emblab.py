@@ -12,8 +12,8 @@ def LCD_init(addr=0x27):
     lcd = CharLCD('PCF8574', address=addr, port=1, backlight_enabled=True)
     lcd.clear()
 
-def LCD_print(line, row=0):
-    lcd.cursor_pos = (row, 0)
+def LCD_print(line, row=0, col=0):
+    lcd.cursor_pos = (row, col)
     lcd.write_string(line)
 
 def LCD_clear():
