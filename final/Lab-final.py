@@ -1,26 +1,25 @@
 import sys
-
-import smbus2
-sys.modules['smbus'] = smbus2
-
 import time
-import board
+import smbus2
 from RPi import GPIO
 
+
+sys.modules['smbus'] = smbus2
 Trig_Pin = 23
 Echo_Pin = 24
 infrared_pin_left = 17
 infrared_pin_right = 27
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(Trig_Pin, GPIO.OUT, initial = GPIO.LOW)
+GPIO.setup(Trig_Pin, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(Echo_Pin, GPIO.IN)
 GPIO.setup(infrared_pin_left, GPIO.IN)
 GPIO.setup(infrared_pin_right, GPIO.IN)
-
 time.sleep(2)
+
 
 def sonar_speed(tempature):
     return 331.6 + 0.6 * tempature
+
 
 def get_distance(tempature):
     GPIO.output(Trig_Pin, GPIO.HIGH)
@@ -33,6 +32,7 @@ def get_distance(tempature):
         pass
     t2 = time.time()
     return (t2 - t1) * sonar_speed(tempature) * 100 / 2
+
 
 if __name__ == "__main__":
 
@@ -74,4 +74,3 @@ if __name__ == "__main__":
             print('ByeBye')
             GPIO.cleanup()
             exit()
-            

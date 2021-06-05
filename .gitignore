@@ -1,2 +1,4 @@
-__pycache__
-MFRC522-python
+.idea/
+venv/
+__pycache__/
+MFRC522-python/
